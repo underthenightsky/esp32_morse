@@ -60,3 +60,8 @@ python sender.py
 Watch the terminal as Python transmits the signals, and look at the Arduino Serial Monitor as your ESP32 decodes the incoming UDP packets into English in real-time!
 
 ![final_output](Outputs/final_output.png)
+
+### Issues I Faced 
+As the no communication gap for a dash and for a letter were the same(450ms ) this lead to issues in decoding the messages.
+![final_output](Outputs/initial_output.png)
+So in later iterations the gap between each letter became 750 ms, 1 word gap became 1200 ms and gap between each sentence became 2500ms. As for dashes and dots we were just transmitting the duration we were stopping for and then stopped for that duaration in the python script,whether a new letter, word gap or sentence end was coming was decided solely based on the gap between the current time and the time when the last input came, this allowed us to check for end line gaps which were larger than word gaps and both were bigger than letter gaps. Understanding this logic of spacing and what was actually being communicated vai UDP was critical (also specifying the ESP32 as STA).
