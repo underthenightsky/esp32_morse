@@ -33,8 +33,7 @@ def transmit_sentence(sentence):
     
     for char in sentence:
         if char == ' ':
-            # Pause between words (7 units total). 
-            # We subtract 3 units because we already paused 3 units after the last letter.
+            # Pause between words (8 units total). 
             print("(Word Space)")
             time.sleep((UNIT_MS * 8) / 1000.0) 
             continue
@@ -55,7 +54,7 @@ def transmit_sentence(sentence):
                 if i < len(morse_seq) - 1:
                     time.sleep(UNIT_MS / 1000.0)
             
-            # 4. Pause between distinct letters (3 units)
+            # 4. Pause between distinct letters (5 units)
             time.sleep((UNIT_MS * 5) / 1000.0)
 
 # --- Test Data ---
